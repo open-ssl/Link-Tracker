@@ -1,0 +1,25 @@
+services:
+  link-tracker-db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database
+    networks:
+      - project-network
+  link-tracker:
+    build: .
+    command: bash -c "cd app/database && alembic upgrade head && cd ../.. && python app/main.py"
+    volumes:
+      - .:/code
+    ports:
+      - "5000:3000"
+    depends_on:
+      - link-tracker-db
+    networks:
+      - project-network
+
+networks:
+  project-network:

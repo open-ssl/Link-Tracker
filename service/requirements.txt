@@ -1,0 +1,11 @@
+pytest==7.4.0
+pytest-asyncio==0.21.1
+alembic
+ciso8601
+httpx
+fastapi[all]==0.101.1
+uvicorn==0.23.2
+sqlalchemy
+uritemplate==3.0.0
+psycopg2>=2.9.1
+psycopg2-binary>=2.9.5
